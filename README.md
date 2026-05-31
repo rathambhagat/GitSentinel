@@ -1,17 +1,16 @@
-# GitSentinel 🔒
-
+# GitSentinel 
 **Intelligent Git Secret Scanner** — Detect and prevent sensitive credentials, API keys, authentication tokens, and private secrets from being committed into repository history.
 
 ## Features
 
-- 🔍 **Git pre-commit hook integration** — Automatically scans staged files before each commit
-- 🧬 **Regex-based secret detection** — 25+ built-in rules for AWS, GitHub, Stripe, JWT, and more
-- 📊 **Entropy-based analysis** — Detects high-entropy strings that may be secrets
-- 🚫 **Commit blocking** — Blocks commits containing high-severity secrets
-- ⚡ **High performance** — Parallel scanning, binary file skipping, hash-based caching
-- 📋 **JSON reports** — Generate detailed scan reports
-- ⚙️ **Configurable** — YAML-based configuration with ignore/allowlist support
-- 🖥️ **Rich CLI** — Beautiful terminal output with severity-colored tables
+- **Git pre-commit hook integration** — Automatically scans staged files before each commit
+- **Regex-based secret detection** — 25+ built-in rules for AWS, GitHub, Stripe, JWT, and more
+- **Entropy-based analysis** — Detects high-entropy strings that may be secrets
+- **Commit blocking** — Blocks commits containing high-severity secrets
+- **High performance** — Parallel scanning, binary file skipping, hash-based caching
+- **JSON reports** — Generate detailed scan reports
+- **Configurable** — YAML-based configuration with ignore/allowlist support
+- **Rich CLI** — Beautiful terminal output with severity-colored tables
 
 ## Quick Start
 
