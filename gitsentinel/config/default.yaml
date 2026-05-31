@@ -1,0 +1,41 @@
+# GitSentinel Configuration
+# Customize scanning behavior, thresholds, and rules
+
+gitsentinel:
+  version: '1.0.0'
+  enabled: true
+
+scanning:
+  parallel: true
+  max_workers: 4
+  max_file_size_mb: 10
+  skip_binary: true
+
+entropy:
+  enabled: true
+  threshold: 4.5
+  hex_threshold: 3.0
+  min_length: 12
+  max_length: 256
+
+severity:
+  block_level: HIGH
+
+cache:
+  enabled: true
+  path: .gitsentinel_cache.db
+
+rules:
+  aws: true
+  jwt: true
+  github: true
+  generic: true
+
+allowlist:
+  values: []
+  patterns: []
+  files: []
+
+reporting:
+  format: json
+  output_dir: reports
