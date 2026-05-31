@@ -127,56 +127,13 @@ def cmd_scan(args: argparse.Namespace) -> int:
 
 
 def _display_findings(alert_manager, console) -> None:
-    """Display findings with rich formatting if available."""
-    try:
-        from rich.table import Table
-        from rich import box
-
-        table = Table(
-            title="GitSentinel Findings",
-            box=box.ROUNDED,
-            show_lines=True,
-        )
-        table.add_column("File", style="cyan", max_width=45)
-        table.add_column("Line", justify="right", style="magenta")
-        table.add_column("Rule", style="white")
-        table.add_column("Severity", style="bold")
-        table.add_column("Method", style="dim")
-        table.add_column("Match", style="dim", max_width=30)
-
-        severity_styles = {
-            "CRITICAL": "bold red",
-            "HIGH": "red",
-            "MEDIUM": "yellow",
-            "LOW": "blue",
-        }
-
-        for f in alert_manager.findings:
-            sev_style = severity_styles.get(f.severity, "white")
-            table.add_row(
-                f.file_path,
-                str(f.line_number),
-                f.rule_id,
-                f"[{sev_style}]{f.severity}[/{sev_style}]",
-                f.detection_method,
-                f.matched_value,
-            )
-
+    """Display findings as simple alert lines."""
+    for finding in alert_manager.findings:
+        message = f"Possible {finding.rule_id} or sensitive data detected at line {finding.line_number} of file {finding.file_path}"
         if console:
-            console.print(table)
+            console.print(f"[red]{message}[/red]")
         else:
-            # Fallback
-            for f in alert_manager.findings:
-                print(
-                    f"  [{f.severity}] {f.file_path}:{f.line_number} "
-                    f"- {f.rule_id}: {f.matched_value}"
-                )
-    except ImportError:
-        for f in alert_manager.findings:
-            print(
-                f"  [{f.severity}] {f.file_path}:{f.line_number} "
-                f"- {f.rule_id}: {f.matched_value}"
-            )
+            print(message)
 
 
 def cmd_report(args: argparse.Namespace) -> int:
