@@ -1,5 +1,4 @@
-# GitSentinel 🔒
-
+# GitSentinel 
 **Intelligent Git Secret Scanner** — Detect and prevent sensitive credentials, API keys, authentication tokens, and private secrets from being committed into repository history.
 
 ## Features
